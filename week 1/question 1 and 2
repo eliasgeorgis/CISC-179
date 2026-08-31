@@ -1,1 +1,12 @@
+Q1
 
+Python       both
+C            compiled
+C++          compiled
+Java         both
+Javascript   interpreted
+
+
+Q2
+
+Python gives access to more optimized libraries so it can multiply large matrices alot quicker than compiled langauges like C++ that doesnt use those same optimizations
