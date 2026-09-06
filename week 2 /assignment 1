@@ -1,1 +1,21 @@
 
+#1a
+print("All the world's a stage,")
+print("And all the men and women merely players:")
+print("They have their exits and their entrances;")
+print("And one man in his time plays many parts,")
+print("His acts being seven ages.")
+
+#1b
+print("""All the world's a stage,
+And all the men and women merely players:
+They have their exits and their entrances;
+And one man in his time plays many parts,
+His acts being seven ages.""")
+
+#1c 127.0.0.1
+
+#1d You could use flush=True when you want output before line ends like a countdown
+# or false when you want code to print together
+
+#1e when using print function there is an invisible \n that triggers it
