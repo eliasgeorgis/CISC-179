@@ -1,1 +1,34 @@
+kg = float(input("Enter weight in kilograms: "))
+lbs = kg * 2.2
+print("Weight in pounds:", lbs)
 
+netBalance = float(input("Enter net balance: "))
+payment = float(input("Enter payment made: "))
+d1 = int(input("Enter number of days in billing cycle: "))
+d2 = int(input("Enter number of days payment was made before billing cycle: "))
+interestRate = float(input("Enter monthly interest rate"))
+avgDailyBalance = (netBalance * d1 - payment * d2) / d1
+interest = avgDailyBalance * interestRate
+print("Calculated Interest:", interest)
+
+
+speedA = float(input("Enter speed of Car A (mph): "))
+speedB = float(input("Enter speed of Car B (mph): "))
+hours = float(input("Enter elapsed hours: "))
+minutes = float(input("Enter elapsed minutes: "))
+totalTime = hours + (minutes / 60)
+distA = speedA * totalTime
+distB = speedB * totalTime
+shortestDistance = (distA**2 + distB**2) ** 0.5
+print("Shortest distance between the cars:", shortestDistance)
+
+
+#2
+# good just assignment variable
+# good names can start with underscore
+# bad names cant start with special symbols
+# good just assignment print
+# bad cant store int in boolean
+
+#challenges
+#didnt have any challenges this time
