@@ -1,1 +1,51 @@
+var1 = 10
+print(hex(id(var1)))
+var1 = 100
+print(hex(id(var1)))
 
+# there are two different addresses because python created a new number at 100
+# in a new memory spot and 10 is left behind in its own spot
+
+var2 = 100
+print(hex(id(var1)))
+# reused to save memory
+
+str1 = "Hello"
+str2 = "World"
+
+# str1 characters
+print(hex(id(str1[0]))) 
+print(hex(id(str1[1]))) 
+print(hex(id(str1[2])))  
+print(hex(id(str1[3]))) 
+print(hex(id(str1[4]))) 
+
+# str2 characters
+print(hex(id(str2[0])))  
+print(hex(id(str2[1])))  
+print(hex(id(str2[2]))) 
+print(hex(id(str2[3])))  
+print(hex(id(str2[4])))
+
+x = "dog"
+y = "cat"
+# x + y
+# output dogcat
+
+#"the " + x + " chases the " + y
+# the dog chases the cat
+
+# x * 4
+# dogdogdogdog
+
+#x = 50
+#x += 1
+
+
+
+#challenges
+# I was confused on this question # Find out the memory addresses of each character in str1 and str2.
+# The following is the example
+# print(hex(id(str1[0])), hex(id(str1[1])))  # where 0 is the first index and 1 is the second index
+# # Use the same method as described above to find the addresses of additional characters and complete the table below.
+# it took me a bit to realize what it was asking and how to do
