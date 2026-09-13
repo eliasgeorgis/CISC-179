@@ -1,1 +1,34 @@
+n = int(input("Enter a positive non-zero integer: "))
+steps = 0
 
+while n != 1:
+    if n % 2 == 0:
+        n = n // 2
+    else:
+        n = 3 * n + 1
+    print(n)
+    steps += 1
+
+print(f"steps = {steps}")
+
+
+
+
+
+text = input("Enter text: ")
+total_alphabets = 0
+t_count = 0
+o_count = 0
+for char in text:
+    if not char.isalpha():
+        continue
+    total_alphabets += 1
+    if char.lower() == 't':
+        t_count += 1
+    elif char.lower() == 'o':
+        o_count += 1
+
+print(f"Total number of alphabets: {total_alphabets}")
+print("Total number of distinct alphabets are:")
+print(f"t = {t_count}")
+print(f"o = {o_count}")
