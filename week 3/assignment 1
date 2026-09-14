@@ -1,1 +1,142 @@
+# 1
+for i in range(32, 127):
+    char = chr(i)
+    print(char, "->", ord(char))
 
+
+# 2
+a = 10
+b = 20
+print("a > 5 and b > 15:", a > 5 and b > 15)
+print("a > 15 or b > 15:", a > 15 or b > 15)
+print("not (a == b):", not (a == b))
+
+# 3
+x = 14
+y = 11
+print("Bitwise and (x & y):", x & y)
+print("Bitwise or (x | y):", x | y)
+print("Bitwise not (~x):", ~x)
+print("Bitwise - (x ^ y):", x ^ y)
+
+
+# 4
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+if num1 > num2:
+    print("Larger number is:", num1)
+else:
+    print("Larger number is:", num2)
+
+if num1 > 0:
+    if num1 % 2 == 0:
+        print("First number is positive and even")
+
+
+# 5a
+n1 = int(input("Enter first number: "))
+n2 = int(input("Enter second number: "))
+n3 = int(input("Enter third number: "))
+
+largest = n1
+
+if n2 > largest:
+    largest = n2
+
+if n3 > largest:
+    largest = n3
+
+print("The largest number is:", largest)
+
+
+# 5b
+num = int(input("Enter an integer: "))
+
+if num % 2 == 0:
+    print("Approach 1: even")
+else:
+    print("Approach 1: odd")
+
+
+# 5c
+percent = int(input("Enter percentage: "))
+if percent > 90:
+    print("Grade: A")
+    print("Description: Work of genuinely superior quality.")
+elif percent >= 80:
+    print("Grade: B")
+    print("Description: Passing performance falls approximately in the upper distribution of passing grades.")
+elif percent >= 71:
+    print("Grade: C")
+    print("Description: Passing performance falls approximately in the center of the distribution of all passing grades.")
+elif percent >= 65:
+    print("Grade: D")
+    print("Description: Passing performance falls approximately in the lower distribution of passing grades.")
+else:
+    print("Grade: F")
+    print("Description: Failing performance that does not satisfy the basic requirements of the course and needs to be improved in significant ways.")
+
+
+# 5d
+op = input("Enter operator (and, or, not): ")
+
+if op == "and":
+    print("A     | B     | Output")
+    print("True  | True  |", True and True)
+    print("True  | False |", True and False)
+    print("False | True  |", False and True)
+    print("False | False |", False and False)
+elif op == "or":
+    print("A     | B     | Output")
+    print("True  | True  |", True or True)
+    print("True  | False |", True or False)
+    print("False | True  |", False or True)
+    print("False | False |", False or False)
+elif op == "not":
+    print("A     | Output")
+    print("True  |", not True)
+    print("False |", not False)
+else:
+    print("Invalid operator")
+
+
+# 5e
+val = int(input("Enter an integer: "))
+
+if (val & 1) == 0:
+    print("even")
+else:
+    print("odd")
+
+# 6
+name = input("What's your name? ")
+time = int(input("What time is it? "))
+
+if time < 1200:
+    print("Hi " + name + ", good morning!")
+else:
+    if time <= 1800:
+        print("Hi " + name + ", good afternoon!")
+    else:
+        print("Hi " + name + ", good evening!")
+
+print("Good Bye")
+
+
+# 7
+x = 1
+y = 1.0
+z = "1"
+
+if x == y:
+    print("one")
+if y == int(z):
+    print("two")
+elif x == y:
+    print("three")
+else:
+    print("four")
+    
+# Challenges
+#I had to search up how to do 5d because it was really confusing and ive never done a truth table before
