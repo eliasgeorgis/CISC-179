@@ -32,3 +32,6 @@ print(f"Total number of alphabets: {total_alphabets}")
 print("Total number of distinct alphabets are:")
 print(f"t = {t_count}")
 print(f"o = {o_count}")
+
+Challenges
+how to skip non characters in part two and not add it in the count
