@@ -1,1 +1,77 @@
+# 1a
+my_list = list(range(100))
 
+print("Is list:", isinstance(my_list, list))
+
+my_list.append(100)
+my_list.reverse()
+last_val = my_list.pop()
+c = my_list.count(50)
+
+# 1b
+original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+reordered = original[-3:] + original[:-3]
+print(reordered)
+
+# 1c
+# it would return 3 because it would make 3 lists and give the length of the outer list
+
+# 1d
+my_list_ten = [5, 8, "hi", 10, False, 20, 18, "hi", 20, True]
+
+my_list_ten_mem = [id(item) for item in my_list_ten]
+
+unique_address = []
+duplicate_address = []
+
+for addr in my_list_ten_mem:
+    if addr not in unique_address:
+        unique_address.append(addr)
+    elif addr not in duplicate_address:
+        duplicate_address.append(addr)
+
+print("Memory addresses:", my_list_ten_mem)
+print("Unique addresses:", unique_address)
+print("Duplicate addresses:", duplicate_address)
+
+# 1e
+del my_list_ten
+
+# 1f
+my_new_list = [5, 8, "hi", 10, False, 20, 18, "hi", 20, True]
+my_new_list_mem = [id(item) for item in my_new_list]
+
+
+print("Addresses match stored history:", my_new_list_mem == my_list_ten_mem)
+# the duplicates have same memory address
+
+# 1g
+import copy
+x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+y = copy.deepcopy(x)
+
+y[0][0] = 999
+print("x:", x)  # [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# 1g h
+# you can use list comprehension to make an independent copy of each inner list
+# yes using nested for loops and ifs
+
+# 1i
+statement = "To be, or not to be, this is the question"
+
+space_count = len([char for char in statement if char == " "])
+
+print(space_count)
+
+# 1j
+sample_list = [10, 20]
+sample_list.append(30)
+sample_list.extend([40, 50])
+sample_list.insert(0, 5)
+sample_list.remove(20)
+removed_item = sample_list.pop()
+
+# Challenges
+# answering g and h i had to search it up for help
+# doing j was a little vague i did not really understand instructions
