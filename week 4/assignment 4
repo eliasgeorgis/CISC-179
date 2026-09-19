@@ -1,1 +1,34 @@
 
+patient = {}
+record_counter = 1
+
+def insert():
+    global record_counter
+
+    first_name = input("Enter patient's first name: ")
+    last_name = input("Enter patient's last name: ")
+    month = int(input("Enter birth month vaccine was given (as an integer): "))
+
+    patient_details = {}
+    patient_details["first_name"] = first_name
+    patient_details["last_name"] = last_name
+    patient_details["vaccine_month"] = month
+    patient[record_counter] = patient_details
+    record_counter = record_counter + 1
+
+
+print("Adding First Patient")
+insert()
+
+print("Patient Dictionary after 1st insert:")
+print(patient)
+
+print("Adding Second Patient")
+insert()
+
+print("Patient Dictionary after 2nd insert:")
+print(patient)
+
+#Challenges
+#figuring out to use global counter to make record keys without overwriting other stuff
+
