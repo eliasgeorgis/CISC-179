@@ -1,1 +1,65 @@
+# 1a
+inputs = []
+for i in range(5):
+    val = input("Enter element " + str(i + 1) + ": ")
+    inputs.append(val)
+my_tuple = tuple(inputs)
 
+# 1b
+single_element_tuple = (5,)
+
+# 1c
+my_tuple2 = (1, 2, 3, 4, 3, 2, 1, 2, 3, 5, 4, 3, 2, 1)
+
+counts = {}
+for num in my_tuple2:
+    if num in counts:
+        counts[num] += 1
+    else:
+        counts[num] = 1
+
+for num, count in counts.items():
+    if count > 1:
+        print("Integer", num, "appears", count, "times.")
+
+# 1d
+my_tuple = (1, 2, 3, 4, 3, 2, 1, 2, 3, 5, 4, 3, 2, 1)
+first_id = id(my_tuple)
+
+my_tuple = my_tuple + my_tuple
+second_id = id(my_tuple)
+
+print(first_id)
+print(second_id)
+print(first_id == second_id)
+
+# 1e
+
+#append() doesn't exist for tuples and you can not assign new value
+
+
+# 2a
+
+# one: int
+# two: int
+# three: int
+# four: int
+
+# 2c
+x = (1, 2, 3, 4)
+a, *b, c = x
+print(a)
+print(b)
+print(c)
+
+# 3
+
+# Index | my_x | my_y
+# 0 | Address of 100 | Address of 200
+# 1 | Address of 200 | Address of 300
+# 2 | Address of 300 | Address of 400
+# 3 | Address of 400 | Address of 500
+
+
+# Challenges
+#trying to understand memory maps and trying to do question 3 because I wasnt exactly sure what it was asking
