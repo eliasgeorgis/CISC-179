@@ -1,1 +1,100 @@
+# 1a
+my_dict = {}
+my_dict["a"] = 1
+my_dict["b"] = 2
+my_dict["c"] = 3
+my_dict["d"] = 4
+my_dict["e"] = 5
+my_dict["f"] = 6
+my_dict["g"] = 7
+my_dict["h"] = 8
+my_dict["i"] = 9
+my_dict["j"] = 10
 
+# 1b
+my_user_dict = {}
+user_choice = "y"
+
+while user_choice == "y":
+    user_ssn = input("SSN: ")
+    user_name = input("Name: ")
+
+    my_user_dict[user_ssn] = user_name
+
+    user_choice = input("Do you want to continue (Y/N): ")
+
+# 1c
+data = [
+    ('Name', 'Sarah Connor'),
+    ('Date of birth', '1 Jan 1980'),
+    ('Address', '1000 Black Mountain Drive', 92126),
+    ('Name', 'Jim Hawkins')
+]
+
+clean_dict = {}
+
+for item in data:
+    if len(item) != 2:
+        print("Invalid pair:", item)
+    else:
+        key = item[0]
+        val = item[1]
+
+        if key in clean_dict:
+            print("Duplicate key:", key)
+            key = input("Enter a new key name: ")
+
+        clean_dict[key] = val
+
+print(clean_dict)
+
+# 1d
+a = [("a", 1), ("b", 2), ("c", 3)]
+res = {}
+
+for item in a:
+    key = item[0]
+    val = item[1]
+    res[key] = val
+
+print(res)
+
+# 1e
+text = "The tiger (Panthera tigris) is a large cat and a member of the genus Panthera native to Asia. It has a powerful, muscular body with a large head and paws, a long tail and orange fur with black, mostly vertical stripes. It is traditionally classified into nine recent subspecies, though some recognise only two subspecies, mainland Asian tigers and the island tigers of the Sunda Islands."
+words = text.split()
+word_counts = {}
+
+for w in words:
+    if w in word_counts:
+        word_counts[w] = word_counts[w] + 1
+    else:
+        word_counts[w] = 1
+
+for w in word_counts:
+    print("Word:", w, "Count:", word_counts[w])
+
+# 2a
+d_orig = {}
+d_orig[123] = "Coconut"
+
+# Make a standalone copy using .copy()
+d_copy = d_orig.copy()
+
+# Change d_copy
+d_copy[123] = "Mango"
+
+print("Original:", d_orig)
+print("Copy:", d_copy)
+
+# 2b
+#make a second variable and set it equal to it so it doesnt affect the original one
+
+#2c
+my_list = [1, 2, 3]
+
+bad_dict = {}
+bad_dict[my_list] = "value"
+
+#list cannot be used as dictionary keys
+#challenges
+#I was really confused on 1e and had to search up how to do it
