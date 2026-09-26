@@ -1,1 +1,191 @@
+#Part 1 — Errors in Data vs. Errors in Code
+#The program expects an integer but the user enters hello . | Bad Input | String cant convert to int
+#The programmer writes prin() instead of print() . | Bug | This is a syntax error since prin() is not a Python function
+#The program divides by a value entered by the user, and the user enters 0 . | Bad Input | cant divide by zero
+
+#Part 2 — Reading an Exception
+#1 int(input("Enter a natural number: "))
+#2 The user pressed Enter without typing any input so nothing can be converted
+#3 it indicates that a function received an argument with the correct type but cant be processed
+#4 No because it converts to 0 but would happen on next line when doing 1/0
+
+#Part 3 — Complete a Basic try-except
+#4 it prints 4
+# abc value error
+# empty value error
+try:
+    value = int(input("Enter an integer: "))
+    print("You entered:", value)
+except ValueError:
+    print("Invalid input! Please enter a valid integer.")
+
+#Part 4 — Trace try-except Control Flow
+#Input | Executed Lines | Skipped Lines | Exception |
+#| `2` | `try`, `A`, `B`, `C`, `D` | `except` branches | None |
+#| `0` | `try`, `A`, `B`, `ZeroDivisionError`, `D` | `C`, `ValueError` | `ZeroDivisionError` |
+#| `hello` | `try`, `A`, `ValueError`, `D` | `B`, `C`, `ZeroDivisionError` | `ValueError` |
+try:
+    print("A")
+    value = int(input("Enter a number: "))
+    print("B")
+    result = 10 / value
+    print("C")
+except ValueError:
+    print("Invalid value")
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+print("D")
+
+#Part 5 — Handle More Than One Exception
+try:
+    val = int(input("Enter an integer: "))
+    reciprocal = 1 / val
+    print("The reciprocal of", val, "is", reciprocal)
+except ValueError:
+    print("Error: Invalid input! Please enter a valid integer.")
+except ZeroDivisionError:
+    print("Error: Cannot calculate the reciprocal of zero.")
+
+# Part 6 — Common Python Exceptions
+#
+# 1. ValueError
+#    int("hello") tries to convert words into a number, which Python cannot do.
+#
+# 2. ZeroDivisionError
+#    10 % 0 tries to divide by zero, which is mathematically impossible.
+#
+# 3. TypeError
+#    values[1.5] tries to use a decimal number as a list position, but list positions must be whole numbers.
+#
+# 4. AttributeError
+#    values.depend(3) tries to call depend(), but Python lists do not have a built in depend action.
+
+#Part 7 — The Default except Branch
+# Purpose of the final except branch:
+# to catch runtime errors.
+#
+# When it executes:
+# It executes only when an exception occurs in the try that does not match ValueError or ZeroDivisionError.
+#
+# Why it must appear last:
+# Python checks except branches in order from top to bottom. If a default except branch comes first, it intercepts every error and prevents the next except branches from ever running.
+#
+# Why specific handlers are more informative:
+# Specific handlers give clear targeted error messages.
+
+#Part 8 — Syntax Errors Are Different
+# What kind of error is present:
+# SyntaxError
+#
+# Locate the defect:
+# Missing colon at the end of the line if value > 0
+#
+# Why the programmer should correct this instead of using try-except:
+# a try-except block cannot catch or handle syntax errors at runtime because it happens before it runs
+
+#Part 9 — Test Every Execution Path
+# | Test Input | Expected Path | Expected Result | Actual Result | Pass/Fail |
+# | 5 | if number > 0 | Positive | Positive | Pass |
+# | -3 | elif number < 0 | Negative | Negative | Pass |
+# | 0 | else | Zero | Zero | Pass |
+number = float(input("Enter a number: "))
+
+if number > 0:
+    print("Positive")
+elif number < 0:
+    print("Negative")
+else:
+    print("Zero")
+
+#Part 10 — Find the Hidden Bug
+# 1. Does the program appear to work for that test?
+#    Yes, inputting 0 executes the else branch and outputs Zero as expected.
+#
+# 2. Which execution path contains the bug?
+#    The elif value < 0: branch.
+#
+# 3. What test input will expose it?
+#    Any negative number
+#
+# 4. What does this demonstrate about testing different execution paths?
+#    It demonstrates that code can contain syntax or runtime errors
+#
+# Corrected Code:
+
+value = float(input("Enter a number: "))
+
+if value > 0:
+    print("Positive")
+elif value < 0:
+    print("Negative")
+else:
+    print("Zero")
+
+
+#Part 11 — Print Debugging
+#1 Expected Result (Manual Calculation):
+# 12.50 * 4 = 50.0
+#
+#2 Actual Result Before Fix:
+# 16.5
+#
+#3 Code with Debugging Statements:
+# def calculate_total(price, quantity):
+#     print("DEBUG: price =", price, "quantity =", quantity)
+#     total = price + quantity
+#     print("DEBUG: calculated total =", total)
+#     return total
+#
+# price = float(input("Price: "))
+# quantity = int(input("Quantity: "))
+#
+# result = calculate_total(price, quantity)
+# print("Total:", result)
+#
+#4
+#First print statement shows that 12.5 and 4 were correctly passed into the function parameters.
+#Second print statement shows that total was calculated as 16.5 instead of 50.0, proving the formula inside calculate_total is wrong.
+#
+#5
+#The function adds price and quantity instead of multiplying them. Change price + quantity to price * quantity.
+#
+#6 corrected code
+def calculate_total(price, quantity):
+    total = price * quantity
+    return total
+
+price = float(input("Price: "))
+quantity = int(input("Quantity: "))
+
+result = calculate_total(price, quantity)
+print("Total:", result)
+
+#Part 12 — Integrated Exception-Handling Program
+# | Input 1 | Input 2 | Expected Path | Expected Result | Actual Result | Pass/Fail |
+# | 10 | 2 | try block | Quotient: 5.0 | Quotient: 5.0 | Pass |
+# | 10 | 0 | ZeroDivisionError | Error: Cannot divide by zero. | Error: Cannot divide by zero. | Pass |
+# | abc | 2 | ValueError | Error: Please enter valid integers. | Error: Please enter valid integers. | Pass |
+# | 10 | xyz | ValueError | Error: Please enter valid integers. | Error: Please enter valid integers. | Pass |
+
+try:
+    num1 = int(input("Enter first integer: "))
+    num2 = int(input("Enter second integer: "))
+    quotient = num1 / num2
+    print("Quotient:", quotient)
+except ValueError:
+    print("Error: Please enter valid integers.")
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero.")
+
+print("Program execution completed normally.")
+
+
+#reflection
+#It means a runtime error occurred
+#They are skipped
+#They allow the program to provide specific error messages and clear recovery steps
+#it prevents the program from crashing
+#Unchecked execution paths can have hidden bugs
+#print statements let you pinpoint exactly where the program messes up by being able to see everything step by step
 
