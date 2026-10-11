@@ -1,1 +1,167 @@
+class Stack:
+    def __init__(self):
+        self.__stk = []
 
+    def push(self, val):
+        self.__stk.append(val)
+
+    def pop(self):
+        val = self.__stk[-1]
+        del self.__stk[-1]
+        return val
+
+
+class CountingStack(Stack):
+    def __init__(self):
+        super().__init__()
+        self.__counter = 0
+
+    def get_counter(self):
+        return self.__counter
+
+    def pop(self):
+        val = super().pop()
+        self.__counter += 1
+        return val
+
+
+stk = CountingStack()
+for i in range(100):
+    stk.push(i)
+    stk.pop()
+print(stk.get_counter())
+
+
+class QueueError(IndexError):
+    pass
+
+
+class Queue:
+    def __init__(self):
+        self.__queue = []
+
+    def put(self, elem):
+        self.__queue.insert(0, elem)
+
+    def get(self):
+        if len(self.__queue) == 0:
+            raise QueueError
+        return self.__queue.pop()
+
+
+que = Queue()
+que.put(1)
+que.put("dog")
+que.put(False)
+try:
+    for i in range(4):
+        print(que.get())
+except QueueError:
+    print("Queue error")
+
+
+class SuperQueue(Queue):
+    def __init__(self):
+        super().__init__()
+
+    def isempty(self):
+        try:
+            elem = self.get()
+            self.put(elem)
+            return False
+        except QueueError:
+            return True
+
+
+que = SuperQueue()
+que.put(1)
+que.put("dog")
+que.put(False)
+for i in range(4):
+    if not que.isempty():
+        print(que.get())
+    else:
+        print("Queue empty")
+
+
+def format_time(h, m, s):
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+class Timer:
+    def __init__(self, hours=0, minutes=0, seconds=0):
+        self.__hours = hours
+        self.__minutes = minutes
+        self.__seconds = seconds
+
+    def __str__(self):
+        return format_time(self.__hours, self.__minutes, self.__seconds)
+
+    def next_second(self):
+        self.__seconds += 1
+        if self.__seconds == 60:
+            self.__seconds = 0
+            self.__minutes += 1
+            if self.__minutes == 60:
+                self.__minutes = 0
+                self.__hours += 1
+                if self.__hours == 24:
+                    self.__hours = 0
+
+    def prev_second(self):
+        self.__seconds -= 1
+        if self.__seconds == -1:
+            self.__seconds = 59
+            self.__minutes -= 1
+            if self.__minutes == -1:
+                self.__minutes = 59
+                self.__hours -= 1
+                if self.__hours == -1:
+                    self.__hours = 23
+
+
+timer = Timer(23, 59, 59)
+print(timer)
+timer.next_second()
+print(timer)
+timer.prev_second()
+print(timer)
+
+
+class WeekDayError(Exception):
+    pass
+
+
+class Weeker:
+    __DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+    def __init__(self, day):
+        if day not in self.__DAYS:
+            raise WeekDayError
+        self.__current_index = self.__DAYS.index(day)
+
+    def __str__(self):
+        return self.__DAYS[self.__current_index]
+
+    def add_days(self, n):
+        self.__current_index = (self.__current_index + n) % 7
+
+    def subtract_days(self, n):
+        self.__current_index = (self.__current_index - n) % 7
+
+
+try:
+    weekday = Weeker('Mon')
+    print(weekday)
+    weekday.add_days(15)
+    print(weekday)
+    weekday.subtract_days(23)
+    print(weekday)
+    weekday = Weeker('Monday')
+except WeekDayError:
+    print("Sorry, I can't serve your request.")
+
+#Challenges
+#learning how to use super classes
+#keeping track of private variables
+#using math to wrap around the time
