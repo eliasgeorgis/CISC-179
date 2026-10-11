@@ -9,3 +9,6 @@ two letters        az        player informed    player informed    pass
 blank enter        " "       player informed     player informed   pass
 uppercase letter    P        treated as lower    treated as lower  pass
 
+
+
+NOTE: I dont know why it is all in one block in preview mode in edit mode it looks like a table I dont know how to fix it
