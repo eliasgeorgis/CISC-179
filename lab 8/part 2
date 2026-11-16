@@ -1,1 +1,27 @@
+import tkinter as tk
 
+def calculate():
+    actual_value = float(value_entry.get())
+    assessment = actual_value * 0.60
+    tax = assessment / 100 * 0.75
+    assessment_label.config(text="Assessment Value: $" + format(assessment, ".2f"))
+    tax_label.config(text="Property Tax: $" + format(tax, ".2f"))
+
+window = tk.Tk()
+window.title("Property Tax")
+
+tk.Label(window, text="Enter the actual value of the property:").pack()
+value_entry = tk.Entry(window)
+value_entry.pack()
+
+tk.Button(window, text="Calculate", command=calculate).pack()
+
+assessment_label = tk.Label(window, text="Assessment Value: ")
+assessment_label.pack()
+
+tax_label = tk.Label(window, text="Property Tax: ")
+tax_label.pack()
+
+tk.Button(window, text="Quit", command=window.destroy).pack()
+
+window.mainloop()
