@@ -1,1 +1,29 @@
+import tkinter as tk
+from tkinter import messagebox
 
+def calculate():
+    minutes = float(minutes_entry.get())
+    rate = rate_var.get()
+    charge = minutes * rate
+    messagebox.showinfo("Charge", "The charge for the call is $" + format(charge, ".2f"))
+
+window = tk.Tk()
+window.title("Long-Distance Calls")
+
+rate_var = tk.DoubleVar()
+rate_var.set(0.07)
+
+tk.Label(window, text="Select a rate category:").pack()
+
+tk.Radiobutton(window, text="Daytime (6:00 a.m. - 5:59 p.m.)", variable=rate_var, value=0.07).pack(anchor="w")
+tk.Radiobutton(window, text="Evening (6:00 p.m. - 11:59 p.m.)", variable=rate_var, value=0.12).pack(anchor="w")
+tk.Radiobutton(window, text="Off-Peak (midnight - 5:59 a.m.)", variable=rate_var, value=0.05).pack(anchor="w")
+
+tk.Label(window, text="Enter number of minutes:").pack()
+minutes_entry = tk.Entry(window)
+minutes_entry.pack()
+
+tk.Button(window, text="Calculate", command=calculate).pack()
+tk.Button(window, text="Quit", command=window.destroy).pack()
+
+window.mainloop()
