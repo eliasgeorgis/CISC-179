@@ -1,0 +1,33 @@
+import os
+from PIL import Image, ImageFilter
+
+input_folder = "jpeg_images"
+output_folder = "png_images"
+
+#makes output folder
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+new_files = []
+#goes through every file checks if jpg then opens it
+for filename in os.listdir(input_folder):
+    if filename.lower().endswith(".jpg"):
+        img = Image.open(os.path.join(input_folder, filename))
+        # greyscale
+        img = img.convert("L")
+        # gaussian blur
+        img = img.filter(ImageFilter.GaussianBlur(radius=2))
+
+        # converts to png
+        new_name = os.path.splitext(filename)[0] + ".png"
+
+        # Save it in the output folder
+        img.save(os.path.join(output_folder, new_name))
+        new_files.append(new_name)
+
+# READ ME.txt
+readme = open(os.path.join(output_folder, "READ ME.txt"), "w")
+for name in new_files:
+    readme.write(name + "\n")
+readme.close()
+
